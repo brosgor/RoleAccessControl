@@ -46,8 +46,8 @@ class ProxyServer(ServerInterface):
         Simula la validación de permisos.
         """
         permissions = {
-            "manager": ["confidential_file", "public_report"],
-            "employee": ["public_report"],
-            "intern": [],
+            "gerente": ["confidential_file", "public_report"],
+            "empleado": ["public_report"],
+            "practicante": [],
         }
         return file_name in permissions.get(role, [])

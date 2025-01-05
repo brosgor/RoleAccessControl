@@ -5,12 +5,13 @@ from infrastructure.RealServer import RealServer
 
 def main():
     # Crear empleado y servidor
-    intern = Employee(name="Bob", role="manager")
+    intern = Employee(name="Bob", role="practicante")
+
     real_server = RealServer()
     proxy_server = ProxyServer(intern, real_server)
 
     # Solicitar archivo
-    file_name = "confidential_file"
+    file_name = "public_report"
     response = proxy_server.get_file(file_name)
     print(response)
 
