@@ -8,11 +8,12 @@ class RealServer(ServerInterface):
     Métodos:
         get_file(file_name): Devuelve el contenido del archivo.
     """
+
     def __init__(self):
         # Mapeo de nombres amigables a rutas internas
         self.file_mapping = {
             "confidential_file": "data/confidential_file.txt",
-            "public_report": "data/public_report.txt"
+            "public_report": "data/public_report.txt",
         }
 
     def get_file(self, file_name):
@@ -30,7 +31,9 @@ class RealServer(ServerInterface):
         """
         # Validar que el archivo exista en el mapeo
         if file_name not in self.file_mapping:
-            raise FileNotFoundError(f"El archivo '{file_name}' no está definido en el sistema.")
+            raise FileNotFoundError(
+                f"El archivo '{file_name}' no está definido en el sistema."
+            )
 
         # Obtener la ruta interna y leer el contenido del archivo
         file_path = self.file_mapping[file_name]
@@ -38,4 +41,6 @@ class RealServer(ServerInterface):
             with open(file_path, "r") as file:
                 return file.read()
         except FileNotFoundError:
-            raise FileNotFoundError(f"El archivo físico '{file_path}' no existe en el servidor.")
+            raise FileNotFoundError(
+                f"El archivo físico '{file_path}' no existe en el servidor."
+            )

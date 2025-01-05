@@ -2,6 +2,23 @@ from domain.interfaces.ServerInterface import ServerInterface
 
 
 class ProxyServer(ServerInterface):
+    """
+    Clase ProxyServer que actúa como un intermediario entre el cliente y el servidor real.
+
+    Esta clase implementa la interfaz ServerInterface y proporciona métodos para
+    gestionar las solicitudes del cliente, delegando las operaciones al servidor real
+    mientras puede agregar funcionalidades adicionales como control de acceso,
+    caché de respuestas, o registro de actividades.
+
+    Atributos:
+        - employee: Un objeto que representa al empleado que realiza la solicitud.
+        - real_server: Una instancia del servidor real que maneja las operaciones.
+
+    Métodos:
+        - get_file(file_name): Solicita un archivo al servidor real y puede
+          realizar operaciones adicionales antes o después de la solicitud.
+    """
+
     def __init__(self, employee, real_server):
         self.employee = employee
         self.real_server = real_server
@@ -18,12 +35,12 @@ class ProxyServer(ServerInterface):
             # Validar permisos
             if not self.has_permission(self.employee.role, file_name):
                 return f"Error: Acceso denegado al archivo '{file_name}' para el usuario {self.employee.name} con rol {self.employee.role}."
-            
+
             # Solicitar al servidor real
             return self.real_server.get_file(file_name)
         except FileNotFoundError:
             return f"Error: El archivo '{file_name}' no se encontró en el servidor."
-    
+
     def has_permission(self, role, file_name):
         """
         Simula la validación de permisos.
@@ -31,6 +48,6 @@ class ProxyServer(ServerInterface):
         permissions = {
             "manager": ["confidential_file", "public_report"],
             "employee": ["public_report"],
-            "intern": []
+            "intern": [],
         }
         return file_name in permissions.get(role, [])
