@@ -12,8 +12,10 @@ class RealServer(ServerInterface):
     def __init__(self):
         # Mapeo de nombres amigables a rutas internas
         self.file_mapping = {
-            "confidential_file": "data/confidential_file.txt",
-            "public_report": "data/public_report.txt",
+            "CNF01": "data/CNF01.txt",
+            "AUD01": "data/AUD01.txt",
+            "OPS01": "data/OPS01.txt",
+            "PUB01": "data/PUB01.txt",
         }
 
     def get_file(self, file_name):
