@@ -15,7 +15,7 @@ class ProxyServer(ServerInterface):
         - employee: Un objeto que representa al empleado que realiza la solicitud.
         - real_server: Una instancia del servidor real que maneja las operaciones.
         - permision_service: Una instancia del servicio encargado de validar permisos
-        
+
     Métodos:
         - get_file(file_name): Solicita un archivo al servidor real y puede
           realizar operaciones adicionales antes o después de la solicitud.
@@ -24,8 +24,9 @@ class ProxyServer(ServerInterface):
     def __init__(self, employee, real_server):
         self.employee = employee
         self.real_server = real_server
-        self.permission_service = PermissionService()  # Instancia del servicio de permisos
-
+        self.permission_service = (
+            PermissionService()
+        )  # Instancia del servicio de permisos
 
     def get_file(self, file_name):
         """
