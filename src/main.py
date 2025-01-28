@@ -10,7 +10,7 @@ def main():
     supervisor = Employee(name="John", role="supervisor")
     manager = Employee(name="Diana", role="gerente")
     real_server = RealServer()
-    proxy_server = ProxyServer(supervisor, real_server)
+    proxy_server = ProxyServer(intern, real_server)
 
     # Solicitar archivo
     confidential_file = "CNF01"  # Archivo confidencial
@@ -18,7 +18,7 @@ def main():
     operations_manual = "OPS01"  # Manual operativo
     public_report = "PUB01"  # Informe público
     
-    requested_file = confidential_file
+    requested_file = operations_manual
     response = proxy_server.get_file(requested_file)
 
     print("=" * 75)

@@ -10,7 +10,6 @@ class RealServer(ServerInterface):
     """
 
     def __init__(self):
-        # Mapeo de nombres amigables a rutas internas
         self.file_mapping = {
             "CNF01": "data/CNF01.txt",
             "AUD01": "data/AUD01.txt",
@@ -21,13 +20,8 @@ class RealServer(ServerInterface):
     def get_file(self, file_name):
         """
         Devuelve el contenido del archivo solicitado.
-
-        Args:
-            file_name (str): El nombre amigable del archivo.
-
         Returns:
             str: Contenido del archivo.
-
         Raises:
             FileNotFoundError: Si el archivo no está definido o no existe físicamente.
         """
