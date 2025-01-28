@@ -17,7 +17,7 @@ def main():
     supervision_report = "AUD01"  # Informe de auditoría
     operations_manual = "OPS01"  # Manual operativo
     public_report = "PUB01"  # Informe público
-    
+
     requested_file = operations_manual
     response = proxy_server.get_file(requested_file)
 

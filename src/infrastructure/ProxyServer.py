@@ -13,7 +13,6 @@ class ProxyServer(ServerInterface):
         self.employee = employee
         self.real_server = real_server
 
-
     def has_permission(self, role, file_name):
         """
         Verifica si un rol tiene permiso para acceder a un archivo.
@@ -26,7 +25,6 @@ class ProxyServer(ServerInterface):
             "empleado": ["OPS01", "PUB01"],
             "practicante": ["PUB01"],
         }
-
 
         return file_name in permissions.get(role, [])
 
